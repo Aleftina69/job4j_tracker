@@ -4,15 +4,15 @@ public class Item {
     private int id;
     private String name;
 
-    Item() {
+    public Item() {
 
     }
 
-    Item(String name) {
+    public Item(String name) {
         this.name = name;
     }
 
-    Item(int id, String name) {
+    public Item(int id, String name) {
         this.id = id;
         this.name = name;
     }
