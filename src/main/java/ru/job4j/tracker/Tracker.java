@@ -66,9 +66,7 @@ public class Tracker {
         int index = indexOf(id);
         boolean result = index != -1;
         if (result) {
-            for (int i = index; i < size - 1; i++) {
-                items[i] = items[i + 1];
-            }
+            System.arraycopy(items, index + 1, items, index, size - 1 - index);
             items[size - 1] = null;
             size--;
         }
