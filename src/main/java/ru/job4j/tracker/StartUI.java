@@ -8,7 +8,7 @@ public class StartUI {
             showMenu();
             int select = input.askInt("Выбрать: ");
             if (select == 0) {
-                extracted(input, tracker);
+                createItem(input, tracker);
             } else if (select == 1) {
                 findAllItems(tracker);
             } else if (select == 2) {
@@ -81,7 +81,7 @@ public class StartUI {
         }
     }
 
-    public static void extracted(Input input, Tracker tracker) {
+    public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Создание новой заявки ===");
         String name = input.askStr("Введите имя: ");
         Item item = new Item(name);
