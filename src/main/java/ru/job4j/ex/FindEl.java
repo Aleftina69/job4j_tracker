@@ -10,7 +10,6 @@ public class FindEl extends Exception {
         throw new ElementNotFoundException("Element not found");
     }
 
-    @SuppressWarnings("checkstyle:NoWhitespaceAfter")
     public static void main(String[] args) {
         String[] value = {"Привет, ", "как ", "дела?"};
         try {
