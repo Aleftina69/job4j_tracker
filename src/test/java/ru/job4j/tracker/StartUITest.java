@@ -25,7 +25,9 @@ class StartUITest {
                 + "Добавленная заявка: " + tracker.findAll()[0] + System.lineSeparator()
                 + "Меню:" + System.lineSeparator()
                 + "0. Добавить новую заявку" + System.lineSeparator()
-                + "1. Завершить программу" + System.lineSeparator());
+                + "1. Завершить программу" + System.lineSeparator()
+                + "=== Завершение программы ===" + System.lineSeparator());
+
     }
 
     @Test
@@ -84,7 +86,8 @@ class StartUITest {
                 + item2 + ln
                 + "Меню:" + ln
                 + "0. Показать все заявки" + ln
-                + "1. Завершить программу" + ln);
+                + "1. Завершить программу" + ln
+                + "=== Завершение программы ===" + ln);
     }
 
     @Test
@@ -109,7 +112,8 @@ class StartUITest {
                 + item1 + ln
                 + "Меню:" + ln
                 + "0. Показать заявки по имени" + ln
-                + "1. Завершить программу" + ln);
+                + "1. Завершить программу" + ln
+                + "=== Завершение программы ===" + ln);
     }
 
     @Test
@@ -134,14 +138,15 @@ class StartUITest {
                 + item1 + ln
                 + "Меню:" + ln
                 + "0. Показать заявку по id" + ln
-                + "1. Завершить программу" + ln);
+                + "1. Завершить программу" + ln
+                + "=== Завершение программы ===" + ln);
     }
 
     @Test
     void whenInvalidExit() {
         Output output = new StubOutput();
         Input input = new MockInput(
-                new String[] {"9", "0"}
+                new String[] {"7", "0"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = new UserAction[]{
