@@ -22,7 +22,7 @@ class StartUITest {
                 + "0. Добавить новую заявку" + System.lineSeparator()
                 + "1. Завершить программу" + System.lineSeparator()
                 + "=== Создание новой заявки ===" + System.lineSeparator()
-                + "Добавленная заявка: " + tracker.findAll()[0] + System.lineSeparator()
+                + "Добавленная заявка: " + tracker.findAll() + System.lineSeparator()
                 + "Меню:" + System.lineSeparator()
                 + "0. Добавить новую заявку" + System.lineSeparator()
                 + "1. Завершить программу" + System.lineSeparator()
