@@ -18,11 +18,12 @@ class StartUITest {
                 new ExitAction(output)
         };
         new StartUI(output).init(input, tracker, actions);
+        Item item = tracker.findAll().get(0);
         assertThat(output.toString()).isEqualTo("Меню:" + System.lineSeparator()
                 + "0. Добавить новую заявку" + System.lineSeparator()
                 + "1. Завершить программу" + System.lineSeparator()
                 + "=== Создание новой заявки ===" + System.lineSeparator()
-                + "Добавленная заявка: " + tracker.findAll() + System.lineSeparator()
+                + "Добавленная заявка: " + item + System.lineSeparator()
                 + "Меню:" + System.lineSeparator()
                 + "0. Добавить новую заявку" + System.lineSeparator()
                 + "1. Завершить программу" + System.lineSeparator()
