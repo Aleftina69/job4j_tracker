@@ -9,7 +9,6 @@ public class ConvertList {
         for (int[] rsl : list) {
             for (int number : rsl) {
                 result.add(number);
-                number++;
             }
         }
         return result;
