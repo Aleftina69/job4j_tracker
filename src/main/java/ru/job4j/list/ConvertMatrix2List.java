@@ -9,9 +9,8 @@ public class ConvertMatrix2List {
         for (int[] row : array) {
             for (int cell : row) {
                 list.add(cell);
-                cell++;
             }
-            }
+        }
         return list;
     }
 }
