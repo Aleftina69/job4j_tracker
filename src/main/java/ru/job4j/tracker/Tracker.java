@@ -1,9 +1,10 @@
 package ru.job4j.tracker;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Tracker {
-    private final ArrayList<Item> items = new ArrayList<>();
+    private final List<Item> items = new ArrayList<>();
     private int ids = 1;
 
     public Item add(Item item) {
@@ -12,7 +13,7 @@ public class Tracker {
         return item;
     }
 
-    public ArrayList<Item> findAll() {
+    public List<Item> findAll() {
         return new ArrayList<>(items);
     }
 
