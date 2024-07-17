@@ -31,7 +31,7 @@ public class SingleTracker {
         return tracker.findAll();
     }
 
-    public ArrayList<Item> findByName(String key) {
+    public List<Item> findByName(String key) {
         return tracker.findByName(key);
     }
 
