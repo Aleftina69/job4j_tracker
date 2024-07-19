@@ -16,22 +16,16 @@ public class AppleStore {
         String name = null;
         for (int i = 0; i < count; i++) {
             Customer result = queue.poll();
-            if (result != null) {
-            name = result.name();
-            }
+            name = (result != null ? result.name() : null);
         }
         return name;
     }
 
     public String getFirstUpsetCustomer() {
-        String nameFirst = null;
         for (int i = 0; i < count; i++) {
             queue.poll();
         }
         Customer result = queue.peek();
-        if (result != null) {
-            nameFirst = result.name();
-        }
-        return nameFirst;
+        return result != null ? result.name() : null;
     }
 }
