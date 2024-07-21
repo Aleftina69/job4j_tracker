@@ -16,7 +16,7 @@ public class AppleStore {
         String name = null;
         for (int i = 0; i < count; i++) {
             Customer result = queue.poll();
-            name = (result != null ? result.name() : null);
+            name = result.name();
         }
         return name;
     }
@@ -25,7 +25,6 @@ public class AppleStore {
         for (int i = 0; i < count; i++) {
             queue.poll();
         }
-        Customer result = queue.peek();
-        return result != null ? result.name() : null;
+        return queue.peek().name();
     }
 }
