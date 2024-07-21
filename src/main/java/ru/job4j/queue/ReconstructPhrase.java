@@ -38,3 +38,4 @@ public class ReconstructPhrase {
         return getEvenElements() + getDescendingElements();
     }
 }
+
