@@ -2,10 +2,20 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Класс описывает модель пользователя банка.
+ * @author TISHAKOVA ALEFTINA
+ * @version 1.0
+ */
 public class User {
     private String passport;
     private String username;
 
+    /**
+     *
+     * @param passport номер паспорта пользователя
+     * @param username имя пользователя
+     */
     public User(String passport, String username) {
         this.passport = passport;
         this.username = username;
