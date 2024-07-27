@@ -3,21 +3,12 @@ package ru.job4j.collection;
 import java.util.Comparator;
 
 public class LexSort  implements Comparator<String> {
-
     @Override
     public int compare(String left, String right) {
         String[] lefts = left.split("\\.");
         String[] rights = right.split("\\.");
-
-        int length = Math.max(lefts.length, rights.length);
-        for (int i = 0; i < length; i++) {
-            int numLeft = i < lefts.length ? Integer.parseInt(lefts[i]) : 0;
-            int numRight = i < rights.length ? Integer.parseInt(rights[i]) : 0;
-            int compared = Integer.compare(numLeft, numRight);
-            if (compared != 0) {
-                return compared;
-            }
-        }
-        return 0;
+        int numLeft = lefts.length > 0 ? Integer.parseInt(lefts[0]) : 0;
+        int numRight = rights.length > 0 ? Integer.parseInt(rights[0]) : 0;
+        return Integer.compare(numLeft, numRight);
     }
 }
