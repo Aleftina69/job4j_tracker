@@ -32,7 +32,7 @@ public class AnalyzeByMap {
         Map<String, Integer> scores = new HashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                scores.put(subject.name(), scores.getOrDefault(subject.name(), 0) + subject.score());
+                scores.merge(subject.name(), subject.score(), Integer::sum);
             }
         }
         int count = pupils.size();
@@ -62,7 +62,7 @@ public class AnalyzeByMap {
         Map<String, Integer> subjectScores = new HashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                subjectScores.put(subject.name(), subjectScores.getOrDefault(subject.name(), 0) + subject.score());
+                subjectScores.merge(subject.name(), subject.score(), Integer::sum);
             }
         }
         List<Label> subjectLabels = new ArrayList<>();
