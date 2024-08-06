@@ -10,7 +10,6 @@ public class School {
         return students.stream()
                 .filter(predicate)
                 .collect(Collectors.toList());
-
     }
 
     public List<Student> getGroup10A(List<Student> students) {
