@@ -16,9 +16,7 @@ public class College {
         return students.keySet()
                 .stream()
                 .filter(student -> student.account().equals(account))
-                .findFirst()
-                .map(Optional::of)
-                .orElse(Optional.empty());
+                .findFirst();
     }
 
     public Optional<Subject> findBySubjectName(String account, String name) {
@@ -26,10 +24,7 @@ public class College {
                 .flatMap(student -> students.getOrDefault(student, Set.of())
                     .stream()
                     .filter(subject -> subject.name().equals(name))
-                    .findFirst()
-                    .map(Optional::of)
-                    .orElse(Optional.empty())
-                    );
+                    .findFirst());
         }
 }
 
