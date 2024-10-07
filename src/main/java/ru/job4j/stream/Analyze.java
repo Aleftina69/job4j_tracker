@@ -30,7 +30,6 @@ public class Analyze {
                 .flatMap(pupil -> pupil.subjects().stream())
                 .collect(Collectors.groupingBy(
                         Subject::name,
-                        LinkedHashMap::new,
                         Collectors.averagingDouble(Subject::score)
                 ));
 
