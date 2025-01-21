@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TrackerTest {
     @Test
     public void whenTestFindById() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item bug = new Item("Bug");
         Item item = tracker.add(bug);
         Item result = tracker.findById(item.getId());
@@ -17,7 +17,7 @@ public class TrackerTest {
 
     @Test
     public void whenTestFindAll() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item first = new Item("First");
         Item second = new Item("Second");
         tracker.add(first);
@@ -28,7 +28,7 @@ public class TrackerTest {
 
     @Test
     public void whenTestFindByNameCheckArrayLength() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item first = new Item("First");
         Item second = new Item("Second");
         tracker.add(first);
@@ -42,7 +42,7 @@ public class TrackerTest {
 
     @Test
     public void whenTestFindByNameCheckSecondItemName() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item first = new Item("First");
         Item second = new Item("Second");
         tracker.add(first);
@@ -56,7 +56,7 @@ public class TrackerTest {
 
     @Test
     public void whenReplaceItemIsSuccessful() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = new Item("Bug");
         tracker.add(item);
         int id = item.getId();
@@ -67,7 +67,7 @@ public class TrackerTest {
 
     @Test
     public void whenReplaceItemIsNotSuccessful() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = new Item("Bug");
         tracker.add(item);
         Item updateItem = new Item("Bug with description");
@@ -78,7 +78,7 @@ public class TrackerTest {
 
     @Test
     public void whenDeleteItemIsSuccessful() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = new Item("Bug");
         tracker.add(item);
         int id = item.getId();
@@ -88,7 +88,7 @@ public class TrackerTest {
 
     @Test
     public void whenDeleteItemIsNotSuccessful() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = new Item("Bug");
         tracker.add(item);
         tracker.delete(1000);
