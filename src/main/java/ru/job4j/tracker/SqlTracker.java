@@ -43,12 +43,14 @@ public class SqlTracker implements Store {
 
     @Override
     public Item add(Item item) {
-        try (PreparedStatement statement = connection.prepareStatement(
-                "INSERT INTO items(name, created) VALUES (?, ?)", Statement.NO_GENERATED_KEYS
-        )) {
+        if (item == null || item.getName() == null || item.getCreated() == null) {
+            throw new IllegalArgumentException("Item, name, or created timestamp cannot be null.");
+        }
+        String sql = "INSERT INTO items(name, created) VALUES (?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getName());
             statement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
-            statement.execute();
+            statement.executeUpdate();
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     item.setId(generatedKeys.getInt(1));
@@ -117,7 +119,7 @@ public class SqlTracker implements Store {
         )) {
             statement.setString(1, key);
             try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
+                if (resultSet.next()) {
                     items.add(new Item(
                             resultSet.getInt("id"),
                             resultSet.getString("name"),
@@ -133,13 +135,13 @@ public class SqlTracker implements Store {
 
     @Override
     public Item findById(int id) {
-        Item item = new Item();
-        try (PreparedStatement statement = connection.prepareStatement(
-                "SELECT * FROM items WHERE id = ?"
-        )) {
+        Item item = null;
+        String sql = "SELECT * FROM items WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
+                if (resultSet.next()) {
+                    item = new Item();
                     item.setId(resultSet.getInt("id"));
                     item.setName(resultSet.getString("name"));
                     item.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
