@@ -3,6 +3,7 @@ package ru.job4j.tracker;
 import org.junit.jupiter.api.Test;
 import ru.job4j.tracker.action.*;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -104,15 +105,17 @@ class StartUITest {
                 new ExitAction(output));
         new StartUI(output).init(input, tracker, actions);
         String ln = System.lineSeparator();
-        assertThat(output.toString()).isEqualTo("Меню:" + ln
-                + "0. Показать заявки по имени" + ln
-                + "1. Завершить программу" + ln
-                + "=== Вывод заявок по имени ===" + ln
-                + item1 + ln
-                + "Меню:" + ln
-                + "0. Показать заявки по имени" + ln
-                + "1. Завершить программу" + ln
-                + "=== Завершение программы ===" + ln);
+        assertThat(output.toString()).isEqualTo(
+                String.format("Меню:" + ln
+                                + "0. Показать заявки по имени" + ln
+                                + "1. Завершить программу" + ln
+                                + "=== Вывод заявок по имени ===" + ln
+                                + "id: %d, name %s, created: %s%n",
+                        item1.getId(), item1.getName(), item1.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")))
+                        + "Меню:" + ln
+                        + "0. Показать заявки по имени" + ln
+                        + "1. Завершить программу" + ln
+                        + "=== Завершение программы ===" + ln);
     }
 
     @Test
@@ -129,22 +132,24 @@ class StartUITest {
                 new ExitAction(output));
         new StartUI(output).init(input, tracker, actions);
         String ln = System.lineSeparator();
-        assertThat(output.toString()).isEqualTo("Меню:" + ln
-                + "0. Показать заявку по id" + ln
-                + "1. Завершить программу" + ln
-                + "=== Вывод заявки по id ===" + ln
-                + item1 + ln
-                + "Меню:" + ln
-                + "0. Показать заявку по id" + ln
-                + "1. Завершить программу" + ln
-                + "=== Завершение программы ===" + ln);
+        assertThat(output.toString()).isEqualTo(
+                String.format("Меню:" + ln
+                                + "0. Показать заявку по id" + ln
+                                + "1. Завершить программу" + ln
+                                + "=== Вывод заявки по id ===" + ln
+                                + "id: %d, name %s, created: %s%n",
+                        item1.getId(), item1.getName(), item1.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")))
+                        + "Меню:" + ln
+                        + "0. Показать заявку по id" + ln
+                        + "1. Завершить программу" + ln
+                        + "=== Завершение программы ===" + ln);
     }
 
     @Test
     void whenInvalidExit() {
         Output output = new StubOutput();
         Input input = new MockInput(
-                new String[] {"7", "0"}
+                new String[]{"7", "0"}
         );
         MemTracker tracker = new MemTracker();
         List<UserAction> actions = Arrays.asList(
